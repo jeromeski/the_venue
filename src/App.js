@@ -1,12 +1,17 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from 'react';
+import Header from './components/header/header.component';
+// import Hero from './components/hero/hero.component';
+import './resources/styles.css';
 
-function App() {
-  return (
-    <div className="App">
-      Hello World
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div className='app'>
+        <Header />
+        
+      </div>
+    );
+  }
 }
 
 export default App;
