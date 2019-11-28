@@ -21,20 +21,26 @@ const Carrousel = () => {
       height: `${window.innerHeight}px`
     }}>
       <Slider {...settings}>
-        <div className='carrousel_image 'style={{
+        <div>
+          <div className='carrousel_image 'style={{
           backgroundImage: `url(${slide_one})`,
           height: `${window.innerHeight}px`
-        }}>
+          }}>
+          </div>
         </div>
-        <div className='carrousel_image' style={{
+        <div>
+          <div className='carrousel_image' style={{
           backgroundImage: `url(${slide_two})`,
           height: `${window.innerHeight}px`
-        }}>
-        <div  className='carrousel_image' style={{
+          }}>
+          </div>
+        </div>
+        <div>
+          <div  className='carrousel_image' style={{
           backgroundImage: `url(${slide_three})`,
           height: `${window.innerHeight}px`
-        }}>
-        </div>
+          }}>
+          </div>
         </div>
       </Slider>
     </div>
