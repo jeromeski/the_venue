@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import Slide from 'react-reveal/Slide';
 import Fade from 'react-reveal/Fade';
 import CustomButton from '../custom-button/custom-button.component';
+import { connect}  from 'react-redux'
+import {animateDiscountAction} from '../../redux/discount/discount.actions';
 
 class Discount extends Component {
 
-  state = {
-    discountStart: 0,
-    discountEnd: 30
-  }
-
   animateDiscount = () => {
-    if( this.state.discountStart < this.state.discountEnd ) {
-      this.setState((prevState) => ({discountStart: prevState.discountStart + 1}))
+    const {discountStart, discountEnd, animateNumber} = this.props
+    if( discountStart < discountEnd ) {
+      animateNumber();
     }
   }
 
@@ -23,6 +21,7 @@ class Discount extends Component {
   }
 
   render() {
+    const {discountStart} = this.props
     return (
       <div className='center_wrapper'>
         <div className='discount_wrapper'>
@@ -30,7 +29,7 @@ class Discount extends Component {
             onReveal={() => this.animateDiscount()}
           >
             <div className='discount_porcentage'>
-              <span>{this.state.discountStart}%</span>
+              <span>{discountStart}%</span>
               <span>OFF</span>
             </div>
           </Fade>
@@ -53,4 +52,13 @@ class Discount extends Component {
   }
 }
 
-export default Discount;
+const mapStateToProps = ({discount: {discountStart, discountEnd}}) => ({
+  discountStart,
+  discountEnd
+})
+
+const mapDispatchToProps = dispatch => ({
+  animateNumber: () => dispatch(animateDiscountAction())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Discount);
